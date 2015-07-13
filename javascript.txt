@@ -280,6 +280,35 @@ function add(firstName, lastName, email, phoneNumber){
                 phoneNumber: phoneNumber
                 
             };
+            
+            
+            
+            
+@ constructor 형식이 아니라 literal notation 에서도 hash처럼 함수 생성 가능(물론 params도 가능)
+
+var someObj = {
+
+aProperty: value,
+someMethod: function(some, params) { }
+
+}; 
+
+
+
+@ 변수의 타입?
+var someObject = {someProperty: someValue};
+console.log( typeof someObject ); // => Object!
+
+@ 특정 property가 있는지 확인하는 기본함수
+console.log( myObj.hasOwnProperty('name') ); // should print true
+console.log( myObj.hasOwnProperty('nickname') ); // should print false
+
+
+
+            
+            
+            
+            
 
 
 
