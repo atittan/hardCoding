@@ -1,0 +1,3 @@
+# hardCoding
+generality
+d
