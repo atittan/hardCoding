@@ -303,6 +303,39 @@ console.log( typeof someObject ); // => Object!
 console.log( myObj.hasOwnProperty('name') ); // should print true
 console.log( myObj.hasOwnProperty('nickname') ); // should print false
 
+@Constructor 자체를 class 라고 할 수 있다.(대문자로 시작)
+object는 class의 한 instance (예) 라고 할 수 있다. 
+
+@ Prototype!
+말그대로 원형! 을 유지하는것. 객체 생성시 constructor를 통해 어떤 properties, functions 를 가지고있는지 추적
+
+@extend prototype
+ constructor 선언 후 prototype 자체를 확장하여 원형을 갱신 하여 일반적으로 사용할 수 있다.
+ 
+		 className.prototype.newMethod =
+		
+		function() {
+		statements;
+		};
+ 
+function Dog (breed) {
+  this.breed = breed;
+};
+
+// here we make buddy and teach him how to bark
+var buddy = new Dog("golden Retriever");
+Dog.prototype.bark = function() {
+  console.log("Woof");
+};
+buddy.bark();
+
+// here we make snoopy
+var snoopy = new Dog("Beagle");
+/// this time it works!
+snoopy.bark();
+
+
+
 
 
             
