@@ -90,10 +90,12 @@ Cascading Style Sheets
 <em></em>
 
 @ table의 head와 body
-<thead><tr>
-            <th></th>  <!--여기서는 td가 아닌 th table header 를 사용-->
-       </tr></thead>
-<tbody></tbody>
+<table>
+	<thead><tr>
+	            <th></th>  <!--여기서는 td가 아닌 th table header 를 사용-->
+	       </tr></thead>
+	<tbody></tbody>
+</table>
 
 
 @ colpan 사용
