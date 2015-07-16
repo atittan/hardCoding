@@ -311,6 +311,8 @@ object는 class의 한 instance (예) 라고 할 수 있다.
 
 @extend prototype
  constructor 선언 후 prototype 자체를 확장하여 원형을 갱신 하여 일반적으로 사용할 수 있다.
+ 생성자에서 메소드를 선언하면 객체 instance 생성시마다 메모리를 할당하지만 prototype를 확장하면 같은 함수를 객체 생성시마다 
+ 각각의 instance가 가리키기만하는 것이다. 
  
 		 className.prototype.newMethod =
 		
@@ -334,6 +336,130 @@ var snoopy = new Dog("Beagle");
 /// this time it works!
 snoopy.bark();
 
+
+@ 상속
+
+Penguin.prototype = new Animal();
+
+This means that Penguin inherits properties and methods from Animal.
+
+@상속받으면 가지고 있지 않은 properties 까지 상속한다.
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;
+}
+
+// create your Emperor class here and make it inherit from Penguin
+function Emperor(name){
+        this.name=name;
+    }
+    
+    
+Emperor.prototype=new Penguin();
+
+
+// create an "emperor" object and print the number of legs it has
+var emperor = new Emperor("king");
+
+console.log(emperor.numLegs); // =>2
+
+
+
+@ Prototype Chain!!
+
+바로 윗 parents class에 없는 메소드, properties 라도 grand parents, grand grand 로 올라간다. 
+
+
+
+@ javascript에서 기본적으로 모든 properties는 public!
+
+@private properties!
+
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;	// 일반적인 변수선언처럼보이겟지만 사실은 private properties
+}
+
+// create your Person 
+var john = new Person("kwan","cho",25);
+
+// try to print his bankBalance
+
+console.log(john.bankBalance); // => undefined
+
+@ 하지만 public 함수를 통해 print가 가능하다.
+Why did that code work? An object's private variables can only be accessed by other methods that are part of that same object.
+
+this.getBalance = function() {
+      // your code should return the bankBalance
+      return bankBalance;
+   };
+   
+   
+@private methods 역시 있다. 
+
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+  
+   var returnBalance = function() {
+      return bankBalance;
+   };
+       
+   // create the new function here
+   
+   this.askTeller = function(){
+            return returnBalance;//() 하면안된다. 메소드 자체를 return 하는거지 실행된건 아님       
+    }
+   
+}
+
+var john = new Person('John','Smith',30);
+console.log(john.returnBalance);
+var myBalanceMethod = john.askTeller();
+var myBalance = myBalanceMethod();//여기서는 methods가 드디어 실행
+console.log(myBalance);
+
+
+@위를 응용해서 private properties에 비밀번호 적용
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+  
+   this.askTeller = function(pass) {
+     if (pass == 1234) return bankBalance;
+     else return "Wrong password.";
+   };
+}
+
+var john = new Person('John','Smith',30);
+/* the variable myBalance should access askTeller()
+   with a password as an argument  */
+   
+var myBalance = john.askTeller(1234)
+
+@ Meta 초월, 한단계 높은! hasOwnproperty는 어디서 왔는가
+
+// what is this "Object.prototype" anyway...?
+var prototypeType = typeof Object.prototype
+console.log(prototypeType);
+
+// now let's examine it!
+var hasOwn = Object.prototype.hasOwnProperty('hasOwnProperty')
+console.log(hasOwn);
+
+
+
+
+
+
+   
 
 
 
