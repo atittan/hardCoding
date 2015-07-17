@@ -292,6 +292,102 @@ p:nth-child(2) {
 @ id는 class와 중첩시켜사용할 수 있다.
 
 
+@ display property
+
+block: This makes the element a block box. It won't let anything sit next to it on the page! It takes up the full width.
+
+inline-block: This makes the element a block box, but will allow other elements to sit next to it on the same line.
+
+inline: This makes the element sit on the same line as another element, but without formatting it like a block. It only takes up as much width as it needs (not the whole line).
+
+none: This makes the element and its content disappear from the page entirely!
+
+@block
+
+기본적으로 div는 block이다.
+
+@ Inline-block
+
+display: inline-block;
+한줄에 나란히 블럭형태로 붙을수 있게함
+
+@Inline
+
+블럭의 형태가 아니라 하나로 겹쳐짐
+텍스트를 입력해야 나눠지고, dimension(box)의 개념이 사라짐
+
+@The Box Model
+https://s3.amazonaws.com/codecademy-blog/assets/ae09140c.png
+
+TM: margin-top
+RP: padding-right
+
+@ margin
+margin: auto
+margin-top: /*some value*/
+margin-right: /*some value*/
+margin-bottom: /*some value*/
+margin-left: /*some-value*/
+margin: 1px 2px 3px 4px; /* top, right, bottom, left*/
+margin: 10px; 4방향 모두 10px으로 설정
+
+@padding
+margin과 동일
+1.
+padding-top: /*some value*/
+padding-right: /*some value*/
+padding-bottom: /*some value*/
+padding-left: /*some-value*/
+2. padding: value value value value;
+
+@ Negative values
+
+margin-left: -20px 하면 왼쪽으로 이동한다.
+
+
+@float
+ html 요소들은 바다위에 떠다니는 배와 같다.
+ 겹치지않게 알아서 잘 배치해주는게 float
+
+@clear
+
+float가 아닌 요소가 다른 float한 요소와 겹치지 않기위하여
+
+element {
+    clear: /*right, left, or both*/
+}
+
+left 인 경우 좌측에있는 요소 밑에 가서 붙는다. 
+
+
+@ static
+
+float가 없을경우 기본값, 그냥 가서 붙는다.
+
+@ position: absolute;
+
+position: static(default)가 아닌 parent를 찾아 그를 따른다.
+하나도 없다면 <html>을 따른다.
+
+@position: relative;
+
+static 이었으면 갓을법한 곳으로 알아서 가라 라고?
+
+@position: fixed;
+
+마우스 스크롤을 내려도 창에 고정되어 계속 보임
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
