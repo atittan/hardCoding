@@ -115,15 +115,184 @@ Cascading Style Sheets
             
 
 
-@ 드디어 division !!
 
-<div style="width:50px; height:50px; background-color:yellow"></div>
 
 @ span
 
 span을 사용하면 부분적으로 style 적용 가능
 
 <p>This text is black, except for the word <span style="color:red">red</span>!</p>
+
+@ a tag도 꾸밀수 있다.
+
+a{
+        text-decoration: none;  // 밑줄없앰
+        color: #cc0000;
+    }
+    
+@ 드디어 division !!
+
+<div style="width:50px; height:50px; background-color:yellow"></div>
+    
+div{
+        height: 50px;
+        width: 120px;
+        border-style: solid;
+        border-color: #6495ED;
+        border-width: 2px;
+        border-radius: 5px;
+        background-color:#BCD2EE;
+        margin: auto;			/* 각 요소의 마진을 오토로-> 정중앙
+        text-align: center;
+    }
+    //border: 1px dashed #3A5FCD; 로 한꺼번에 써도됫엇는데
+
+
+@ 모든 html 태그는 Selectors 이다. 
+심지어 <html> 까지도!
+
+@ nested selector
+
+div div p {
+    /*CSS stuff!*/
+}
+
+
+@ Universal selector
+
+* {
+    border: 2px solid black;
+}
+
+@html 의 트리구조 Cascade
+
+<!DOCTYPE html>
+<html> <!--The trunk of the tree!-->
+	<head> <!--Child of html, parent of title,
+		   sibling of body-->
+		<title></title> <!--Immediate child of head,
+						child of head AND html-->
+	</head>
+	<body> <!--Child of html, parent of p,
+		   sibling of head-->
+		<p></p> <!--Immediate child of body,
+				child of body AND html-->
+	</body>
+</html>
+
+@ 하위 태그는 모든 상위태그와 단순 parent-child 관계를 가진다.
+하지만 imediate child 인경우 그 바로 1단계하위 태그만 선택하기위해
+
+div > p { /* Some CSS */ }
+
+를 사용
+
+@ Cascade에서 더 특정된 태그일수록 그게 이전것을 override한다.
+
+p {
+	font-family: Garamond, serif;  /*가장 바깥범위 
+}
+
+#intro {
+	font-weight: bold;   /* CSS id
+	color: #000000;
+}
+
+div p {
+	color: #7AC5CD;
+}
+
+li p {			/* li안에 있는 특정 p를 override 한다. 
+	font-family: Verdana, sans-serif;
+	color: #0000FF;
+}
+
+.list_item {			/* 그중에서도 list_item 이라는 class 를 사용한 것을 더 override한다. 
+	font-family: Vivaldi, cursive;
+	color: #FF00FF;
+}
+
+#summary {
+	font-size: 20px;
+	color: #000000;
+}
+
+
+@Class
+
+can simply apply the same class to all those HTML elements
+
+<div class="square"></div>
+<img class="square"/>
+<td class="square"></td>
+
+Classes are identified in CSS with a dot (.), like so:
+.square {
+    height: 100px;
+    width: 100px;
+}
+
+@ID
+
+<div id="first"></div>
+<div id="second"></div>
+<p id="intro"></p>
+
+IDs are identified in CSS with a pound sign (#):
+
+#first {
+    height: 50px;
+}
+
+#second {
+    height: 100px;
+}
+
+#intro {
+    color: #FF0000;
+}
+
+@ Pseudo-class_selector
+
+selector:pseudo-class_selector {
+    property: value;
+}
+
+예제
+
+
+
+a:hover {
+	color: #cc0000;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+마우스 오버할때마다 하이퍼링크의 폰트스타일이가 변화
+
+@Pseudo-class of Link
+
+a:link: An unvisited link.
+a:visited: A visited link.
+a:hover: A link you're hovering your mouse over.
+
+@ 수많은 리스트중 first-child 만 변화시키는 Pseudo-class
+
+p:first-child {
+    color: red;
+}
+
+@ 태그들중 n번째
+
+p:nth-child(2) {
+    color: red;
+}
+주의사항 : 하지만 n은 p만 아니라 모든 child 를 포함하는 개수이다.
+
+@ id는 class와 중첩시켜사용할 수 있다.
+
+
+
 
 
 
