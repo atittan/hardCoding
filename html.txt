@@ -377,7 +377,15 @@ static 이었으면 갓을법한 곳으로 알아서 가라 라고?
 
 마우스 스크롤을 내려도 창에 고정되어 계속 보임
 
+@어렵지만 요약정리
+기본은 position: static;
+다른것들을 무시하려면 absolute;
+인식시키려면 relative;
 
+관련 사이트
+https://css-tricks.com/absolute-positioning-inside-relative-positioning/
+
+http://mytory.net/archives/10997/
 
 
 
