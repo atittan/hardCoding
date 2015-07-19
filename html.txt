@@ -387,6 +387,12 @@ https://css-tricks.com/absolute-positioning-inside-relative-positioning/
 
 http://mytory.net/archives/10997/
 
+@ z-index
+
+ㅋㅋ 장난치냐 z 인덱스 잘만되구만
+position이 static이 아닌경우만 z-index가 적용된다. 
+값이 높을수록 우선순위가 커진다. 
+
 
 
 
