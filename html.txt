@@ -7,6 +7,11 @@ HyperText Markup Language
 
 Cascading Style Sheets
 
+	<head>
+		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<title></title>
+	</head>
+
 @tags
 < >
 
