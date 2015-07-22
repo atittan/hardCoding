@@ -88,6 +88,9 @@ Cascading Style Sheets
 @배경색
 <p style="background-color: red;">Hello!</p>
 
+@배경 이미지
+background-image: url('https://goo.gl/ODpi3y');
+
 @정렬
 <h1 style="text-align:center">
 
@@ -96,6 +99,9 @@ Cascading Style Sheets
 
 @ italic 
 <em></em>
+
+@대문자 사용
+text-transform: uppercase; // => 보라색
 
 @ table의 head와 body
 <table>
@@ -154,6 +160,7 @@ div{
         text-align: center;
     }
     //border: 1px dashed #3A5FCD; 로 한꺼번에 써도됫엇는데
+    // auto, then it will take as much as possible.
 
 
 @ 모든 html 태그는 Selectors 이다. 
@@ -401,6 +408,19 @@ http://mytory.net/archives/10997/
 position이 static이 아닌경우만 z-index가 적용된다. 
 값이 높을수록 우선순위가 커진다. 
 
+@ link의 순서가 중요하다. 
+
+<!DOCTYPE html>
+<html>
+  <head>
+     <link href="font.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+  </head>
+  ...
+</html>
+
+font.css 를 통해 폰트정보를 먼저 얻고
+main.css에서 그 폰트를 적용한다. 
 
 
 
