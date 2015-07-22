@@ -78,6 +78,9 @@ Cascading Style Sheets
 
 @색상과 사이즈
 <h2 style="color: green; font-size:12px">
+  
+@hexadecimal 말고 RGB로도 가능
+  color: rgb(102,153,0); 
 
 @폰트
 <h1 style="font-family: Arial">Title</h1>
