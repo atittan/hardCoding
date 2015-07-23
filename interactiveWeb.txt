@@ -40,4 +40,46 @@ $(document).ready(main);
   로드 전에 실행한다면 그ㅡ html요소가 없을수도있다.
 //waits for the HTML document to load completely before running the main() function
 
-@ 
+@ jQuery enables us to do three main things on a web page:
+
+Events. Respond to user interactions.
+DOM Manipulation. Modify HTML elements on the page.
+Effects. Add animations.
+
+
+@ animate 를 통해 우측으로 이동
+  X 클릭시 다시 모두 좌측으로 이동
+
+var main = function(){
+        $('.icon-menu').click(
+                function(){
+                        $('.menu').animate(
+                            {left: '0px'}, 200
+                        );
+                        // alert('test');
+                        $('body').animate(
+                            {left: '285px'}, 200  
+                        );
+                    }
+        );
+        $('.icon-close').click(
+                function(){
+                        $('.menu').animate(
+                            {left: '-285px'}, 200  
+                        );
+                        
+                        $('body').animate(
+                            {left: '0px'}, 200  
+                        );
+                        
+                    }  
+            
+        );
+        
+    };
+    
+    
+$(document).ready(main);
+    
+
+@
