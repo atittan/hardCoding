@@ -320,6 +320,7 @@ none: This makes the element and its content disappear from the page entirely!
 @block
 
 기본적으로 div는 block이다.
+각 div는 새 라인에 블록(한라인) 단위로 생성된다.
 
 @ Inline-block
 
@@ -367,6 +368,7 @@ margin-left: -20px 하면 왼쪽으로 이동한다.
 @clear
 
 float가 아닌 요소가 다른 float한 요소와 겹치지 않기위하여
+float를 꺼버리는 역할
 
 element {
     clear: /*right, left, or both*/
@@ -409,6 +411,8 @@ position이 static이 아닌경우만 z-index가 적용된다.
 값이 높을수록 우선순위가 커진다. 
 
 @ link의 순서가 중요하다. 
+순차적으로 정보가 필요하고 마지막 link 가 override한다.
+최종 link가 제일 중요하고 customed 가 되어야 한다.  
 
 <!DOCTYPE html>
 <html>
@@ -421,6 +425,49 @@ position이 static이 아닌경우만 z-index가 적용된다.
 
 font.css 를 통해 폰트정보를 먼저 얻고
 main.css에서 그 폰트를 적용한다. 
+
+@ Bootstrap
+
+Bootstrap은 CSS관련 여러가지 유용한 템플릿을 제공한다.
+트위터가 대표적으로 사용했을 뿐
+
+기본적으로 column 기반으로 구성되어있다.
+개발자가 미리 12개의 좌표로 나눠놓고 그것을 column value를 통해 control 할 수 있게 만들어 놓은듯
+
+<div class="row">
+
+	<div class="col-md-2">
+		<h4>Content 1</h4>
+	</div>
+
+	<div class="col-md-8">
+		<h4>Content 2</h4>
+	</div>
+
+	<div class="col-md-2">
+		<h4>Content 3</h4>
+	</div>
+
+</div>
+
+@ Navigation menu bar 를 정렬하기위해 
+<ul class="pull-left">
+<ul class="pull-right">
+를 지원
+
+
+@ Thumbnail: 적당한 패딩을 가지고 그 div를 채우는 페북의 작은 프로필 사진같은!
+
+	Bootstrap provides the ".thumbnail" class to easily display grids of images. Here's how to create a thumbnail:
+
+<div class="thumbnail">
+  <img src="..." >
+</div>
+
+
+
+
+
 
 
 
