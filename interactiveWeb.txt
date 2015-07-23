@@ -1,0 +1,43 @@
+It's more about javscript and Jquery.
+
+@ script element 가 존재한다
+
+css 의 <link href="style.css" rel="stylesheet">
+처럼
+
+<script src="jquery.min.js"></script> 를 통해 inlcude
+
+@ 드롭다운 메뉴
+
+var main = function() {                     // Jquery는 css의 selector와 같은 형식으로 html element를 지정하여 동작한다.
+  $('.dropdown-toggle').click(function() {  // if문과같다 click이 되엇다면 {} 를 실행
+    $('.dropdown-menu').toggle();           
+  });
+}
+
+$(document).ready(main);
+
+
+--- 난 이게편해
+
+var main = function() {
+  $('.dropdown-toggle').click( 
+  	function(){
+	  	$('.dropdown-menu').toggle();
+	  }
+  );
+}
+
+$(document).ready(main);
+
+---
+
+
+
+@ $(document).ready(main) 
+
+  HTML 문서가 모두 로드될떄까지 기다렷다가 파라미터로 가지는 main 함수를 실행
+  로드 전에 실행한다면 그ㅡ html요소가 없을수도있다.
+//waits for the HTML document to load completely before running the main() function
+
+@ 
