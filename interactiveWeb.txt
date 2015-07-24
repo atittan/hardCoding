@@ -107,5 +107,94 @@ $(document).keypress(function(event) {
 
 
 
+@ article선택 및 하위 descriptor 열고 닫기
+
+var main = function(){
+        $('.article').click(
+            function(){
+                        $('.article').removeClass('current');
+                        $('.description').hide();
+                        $(this).addClass('current');
+                        $(this).children('.description').show();
+                }
+        );
+        
+        $(document).keypress(
+                function(event){
+                        if(event.which === 111){
+                                $('.current').children('.description').toggle();
+                                // alert('pop');
+                        }else if(event.which === 110){
+                                var currentArticle = $('.current');
+                                var nextArticle = currentArticle.next();
+                                currentArticle.removeClass('current');
+                                nextArticle.addClass('current');
+                        }
+                        
+                }
+        
+        );
+    }
+    
+$(document).ready(main);
+
+@ jQuery 에서 $()의 두가지 기능
+
+$() -> selector의 역할
+$(<html 요소>)  없으면 새로 생성한다.
+
+@ .text() method adds text to an HTML element.
+	요소내 모든 텍스트를 가져오므로 인풋으로 쓰일수는 없다
+
+$('<p>').text('List')
+	새 p 를 만들고 'List' 라는 텍스트를 작성. 원래 있는거면 대체
+	
+	
+$('h1').text()
+	h1 요소의 text를 get 한다.
+
+@@ .val() 역시 동일. 하지만 매치된 첫번째 요소의 텍스트만 가져온다 input으로 쓰일때는 무조건 val 
+	
+@ .appendTo() method
+	adds HTML elements to the end of the selected element.
+	
+$('.btn').click(function() {
+  $('<li>').text('New item').appendTo('.items');
+});
+
+@ .prependTo();
+
+$('.btn').click(function() {
+  $('<li>').text('New item').prependTo('.items');
+});  
+
+@ .remove();
+
+$('.btn').click(function() {
+  $('.selected').remove();
+});
+
+@ Six jQuery Methods
+
+.hide() hides the selected HTML element
+.show() displays an element
+.toggle() alternates hiding and showing an element
+.addClass() adds a CSS class to an element
+.removeClass() removes a class from an element
+.toggleClass() alternates adding and removing a class from an element
+
+@ Document Object Model
+
+	@ .next() method gets the next sibling of the selected element.
+	@ .prev() method gets the previous sibling of the selected element.
+	@ .children() method gets the children of the selected element.
+		children(); - all the children	children('.pupdate'); - .pupdate class를 가진 특정 child
+		
+	
+	
+
+
+
+
 
 
