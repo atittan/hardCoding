@@ -82,4 +82,30 @@ var main = function(){
 $(document).ready(main);
     
 
-@
+@ 그 selector 를 다시 쓰기 위해서는
+
+$('.social li').click(function() {
+  $(this).toggleClass('active');
+});
+
+
+
+@ keypress 시 이벤트 발생
+
+$(document).keypress(function() {
+  $('.dropdown-menu').toggle();
+});
+
+@ event object
+이벤트에 대한정보를 params로 받아 비교후 그것을 조건으로삼는다.
+
+$(document).keypress(function(event) {
+  if(event.which === 109) {
+    $('.dropdown-menu').toggle();
+  }
+});
+
+
+
+
+
