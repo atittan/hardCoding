@@ -234,6 +234,109 @@ var main = function(){
 $(document).ready(main);
 
 
+@ Animation
+	- sildeDown();
+	- sildeUp();
+	- fadeIn();
+	- fadeOut();
+	- animate();
 
+@ slideDown(); 사진을 위에서부터 슬라이드다운하여 나타나게함
+
+var main = function() {
+  $(".btn").click(function(event) {
+    $(".container").hide().slideDown(800);	//기존 사진을 hide한후 다시 slideDown
+  });
+};
+
+$(document).ready(main);
+
+@ slideUp(); 사진을 슬라이드업하여 사라지게함
+
+var main = function() {
+  $(".btn").click(function(event) {
+    $(".container").show().slideUp(1100);	//기존 사진을 보여주고 sildeUp으로 없앤다.
+  });
+};
+
+$(document).ready(main);
+
+
+@ fadeIn(duration); 페이드인 효과
+
+var main = function() {
+  $(".btn").click(function(event) {
+    $(".container").hide().fadeIn();
+  });
+};
+
+
+$(document).ready(main);
+
+@ fadeOut(duration); 	페이드아웃으로 사라지게한다.
+
+var main = function() {
+  $(".btn").click(function(event) {
+    $(".container").show().fadeOut();
+  });
+};
+
+$(document).ready(main);
+
+@ animate( {	CSS properties	}, duration )
+
+animation은 CSS culy braket 통채로 하나, 수행시간. 두개의 파라미터를 가진다. 
+
+@ dropdown & navigation
+
+var main = function() {
+        $('.dropdown-toggle').click(
+                function(){
+                        $('.dropdown-menu').toggle();
+                    }
+            );
+            
+        $('.arrow-next').click(
+                function(){
+                        var currentSlide = $('.active-slide')
+                        var nextSlide = currentSlide.next();
+                        if(nextSlide.length === 0){ nextSlide = $('.slide').first();}
+                        currentSlide.fadeOut(600).removeClass('active-slide');
+                        nextSlide.fadeIn(600).addClass('active-slide'); 
+                        var currentDot = $('.active-dot');
+                        var nextDot = currentDot.next();
+                        if(nextDot.length === 0){nextDot = $('.dot').first();}
+                        currentDot.removeClass('active-dot');
+                        nextDot.addClass('active-dot');
+                        
+                        
+                }
+                
+            );
+            
+        $('.arrow-prev').click(
+                function(){
+                        var currentSlide = $('.active-slide');
+                        var prevSlide = currentSlide.prev();
+                        
+                        if(prevSlide.length === 0 ){ prevSlide = $('.slide').last()};
+                        currentSlide.fadeOut(600).removeClass('active-slide');
+                        prevSlide.fadeIn(600).addClass('active-slide');
+                        var currentDot = $('.active-dot')
+                        var prevDot = currentDot.prev();
+                        if(prevDot.length === 0){prevDot = $('.dot').last();}
+                        currentDot.removeClass('active-dot');
+                        prevDot.addClass('active-dot');
+                        
+                    
+                    
+                }    
+            
+            
+        );
+    
+    };
+    
+$(document).ready(main)
 
 
