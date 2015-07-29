@@ -1,0 +1,177 @@
+parentheses=bracket=()
+
+print "string" 그냥 프린트
+puts "string" 프린트후 endl
+
+1라인 주석 #
+
+멀티라인 주석 {주의사항, =(띄우면안됌)being}
+=begin
+=end
+
+
+first_name.capitalize!
+!는 자기자신을 가리킴
+state2=state.upcase로 쓸수도있다
+
+
+elsif
+
+루비의 update연산자
++=
+-=
+
+while문은 조건이 true일때 계속 돌다가 false가 되면 멈춘다.
+
+utill 문은 반대로 false일때 돌다가 true 가 되면 멈춘다.
+
+for i in 1...5 exclusive 5는 뺀다
+for i in 1..5 include 5까지 포함
+
+loop 는 조건문이 따로 없고 카운터 i와 break if 문을 따로 둔다
+
+
+object.each { |item| # Do something }
+
+object.each do |item| # Do something end
+
+user_input.include? "string"
+string을 포함하는지 bool 리턴
+
+user_input.gsub!(/s/,"th")  자기자신을 뜻하는 ! 를 기억!
+global substitution (입력받은 s는 모두 th로 변화)
+
+multi_d_array.each { |x| puts "#{x}\n" }
+
+
+다차원 배열의 each문을 이용한 iterating
+1st : s.each { |sub_array| sub_array.each { |x| puts x} }
+
+2nd :
+
+s.each do |sub_array|
+	sub_array.each do |y|
+		put y
+	end
+end
+
+
+
+
+two way of hash
+
+1)
+prices = { 
+  "apple" => 0.52,
+  "banana" => 0.23,
+  "kiwi" => 1.42
+}
+
+
+2)
+sounds = Hash.new
+sounds["dog"] = "woof"
+sounds["cat"] = "meow"
+
+hash의 인덱스는 x[0]에
+키값은 x[1]에 저장되는 듯 하다.
+
+3)
+Hash[("a".."z").to_a.zip((1..26).to_a)]
+
+
+
+
+노노 키와 값을 부르는법
+
+family.each { |x, y| puts "#{x}: #{y}" }
+
+h= Hash.new("nothing here")
+hash 의 default value
+존재하지 않는 키에 접근하면 default value를 리턴한다.
+
+
+@has의 sorting하는법 
+frequencies = frequencies.sort_by do |x, y|
+    x
+
+
+--------
+
+histogram
+
+@함수
+def nameOfFunc(parameter)
+	contents
+end
+
+numeOfFunc(argument)
+
+
+@sorting
+숫자든 string이든 그냥 .sort!
+
+
+@ordering your library
+def alphabetize(arr, rev=false)
+  if rev
+    arr.sort { |item1, item2| item2 <=> item1 }
+  else
+    arr.sort { |item1, item2| item1 <=> item2 }
+  end
+end
+
+books = ["Heart of Darkness", "Code Complete", "The Lorax", "The Prophet", "Absalom, Absalom!"]
+
+puts "A-Z: #{alphabetize(books)}"
+puts "Z-A: #{alphabetize(books, true)}"
+
+
+@@함수내에서 return을 따로 지정해주지않아도 가장 마지막 라인이 return value가 된다. 
+
+@symbol
+
+puts "string".object_id
+puts "string".object_id
+
+puts :symbol.object_id
+puts :symbol.object_id
+
+string은 같은 이름의 string이 여러개 존재할 수 있지만(여러개의 주소)
+symbol은 단 하나의 object ID 만 가진다. 
+
+They're immutable, meaning they can't be changed once they're created;
+Only one copy of any symbol exists at a given time, so they save memory;
+Symbol-as-keys are faster than strings-as-keys because of the above two reasons.
+심볼이 string보다 수행시간도 빠르다. 변하지않고, 단하나만 존재하기때문에
+
+@ .to_sym (.intern 으로도 씀 internalize)
+strings.map{ |x| x.to_sym } 와
+strings.map!{ |x| x.to_sym } 의 차이점 숙지
+
+@ruby 1.9 이후 새로운 hash 스타일(with symbol)
+movies = {
+    interstella:"quantum theory",
+    coungpu:"more than action",
+    bondgirl:"sexy"
+    }
+    
+    
+
+@ hash key나 value만 뽑아내기
+my_hash = { one: 1, two: 2, three: 3 }
+
+my_hash.each_key { |k| print k, " " }
+# ==> one two three
+
+my_hash.each_value { |v| print v, " " }
+# ==> 1 2 3
+
+
+
+
+
+
+
+
+
