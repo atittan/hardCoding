@@ -129,7 +129,7 @@ puts "Z-A: #{alphabetize(books, true)}"
 
 @@함수내에서 return을 따로 지정해주지않아도 가장 마지막 라인이 return value가 된다. 
 
-@symbol
+@ symbol
 
 puts "string".object_id
 puts "string".object_id
@@ -167,6 +167,19 @@ my_hash.each_key { |k| print k, " " }
 my_hash.each_value { |v| print v, " " }
 # ==> 1 2 3
 
+
+@ Case 문 작성 
+
+case language
+when "JS"
+  puts "Websites!"
+when "Python"
+  puts "Science!"
+when "Ruby"
+  puts "Web apps!"
+else
+  puts "I don't know!"
+end
 
 
 
