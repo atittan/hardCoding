@@ -187,6 +187,19 @@ end
  Hash의 delete function
 
 
+@ Simpler if
 
+expression if boolean
+
+ruby의 oneline if 는 문장 뒤에붙는다.
+그리고 end 가 필요하지않다.
+
+@ ternary conditional expression
+
+boolean ? Do this if true: Do this if false
+eg)
+puts 3 < 4 ? "3 is less than 4!" : "3 is not less than 4."
+	puts 인경우 puts 이후 boolean, true실행, false실행 순인걸 확인
+	
 
 
