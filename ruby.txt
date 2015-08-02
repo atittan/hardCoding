@@ -182,7 +182,9 @@ else
 end
 
 
-
+ @ movies.delete(title)
+ 
+ Hash의 delete function
 
 
 
