@@ -168,18 +168,7 @@ my_hash.each_value { |v| print v, " " }
 # ==> 1 2 3
 
 
-@ Case 문 작성 
 
-case language
-when "JS"
-  puts "Websites!"
-when "Python"
-  puts "Science!"
-when "Ruby"
-  puts "Web apps!"
-else
-  puts "I don't know!"
-end
 
 
  @ movies.delete(title)
@@ -200,6 +189,338 @@ boolean ? Do this if true: Do this if false
 eg)
 puts 3 < 4 ? "3 is less than 4!" : "3 is not less than 4."
 	puts 인경우 puts 이후 boolean, true실행, false실행 순인걸 확인
+	
+	
+@ Case 문 작성 
+
+case language
+when "JS"
+  puts "Websites!"
+when "Python"
+  puts "Science!"
+when "Ruby"
+  puts "Web apps!"
+else
+  puts "I don't know!"
+end
+
+@ 더 축약해서 one line when then 
+
+case language
+  when "JS" then puts "Websites!"
+  when "Python" then puts "Science!"
+  when "Ruby" then puts "Web apps!"
+  else puts "I don't know!"
+end
+
+@ Conditional Assignment Operator
+	함수 내 파라미터에 대해 default 값을 설정할 때 용이
+favorite_book ||= "Cat's Cradle"
+puts favorite_book
+
+변수가 nil 이면 넣고 뭔가 들어잇으면 유지하고 다음라인으로 수행
+
+@ Implicit Return
+
+함수에서 return을 지정하지 않아도 마지막 라인을 리턴한다. 
+javascript 는 undefined, python은 none 을 리턴하지만 루비는 스마트하다.
+
+
+@ Short-Circuit Evaluation
+
+def a
+  puts "A was evaluated!"
+  return true
+end
+
+def b
+  puts "B was also evaluated!"
+  return true
+end
+
+puts a || b	// a만 실행 thats enough
+puts "------"
+puts a && b	// b까지 실행해봐야 알수있다.
+
+@ for문은 저리가라
+
+5.times { puts "Odelay!" }
+
+@ .upto() and .downto()
+
+95.upto(100) { |num| print num, " " }
+# Prints 95 96 97 98 99 100
+
+"L".upto("P") {|x| puts x}
+
+string에도 사용가능하다.
+
+@ .redpond_to?(:function name)
+
+[1, 2, 3].respond_to?(:to_sym)	//false
+
+이 object가 함수를 가지고 있는지 boolean 으로 나타낸다. 함수이름은 유일하므로 symbol을 사용
+
+@ << concatenation operator (the shovel)
+	.push 나 string의 += 연산자를 << 로 간단하게 대체
+
+alphabet = ["a", "b", "c"]
+	//# alphabet.push("d") # Update me
+alphabet << "d" # Update me!
+
+caption = "A giraffe surrounded by "
+	//# caption += "weezards!" # Me, too!
+caption << "weezards!" # Me, too!
+
+@ String Interpolation
+
+"I love #{drink}."
+# ==> I love espresso.
+"I am #{age} years old."
+# ==> I am 26 years old.
+
+@ 소수를 구하라(refactorying)
+
+require 'prime'
+
+def first_n_primes(n)
+  # Check for correct input!
+  "n must be an integer" unless n.is_a? Integer
+  "n must be greater than 0" if n <= 0
+
+  # The Ruby 1.9 Prime class makes the array automatically!
+  prime = Prime.instance
+  prime.first n
+end
+
+first_n_primes(10)
+
+@ collect
+	map과 다른개념이 뭔지 아직 잘 모르겠다.
+my_nums.collect! { |num| num ** 2 }
+# ==> [1, 4, 9]
+my_nums
+# ==> [1, 4, 9]
+
+@ yield 블럭을 가진 함수의 구조
+
+def yield_name(name)
+  puts "In the method! Let's yield."
+  yield("Kim")
+  puts "In between the yields!"
+  yield(name)
+  puts "Block complete! Back in the method."
+end
+
+yield_name("Eric") { |n| puts "My name is #{n}." }
+
+	In the method! Let's yield.
+	My name is Kim.
+	In between the yields!
+	My name is Eric.
+	Block complete! Back in the method.
+
+@ proc : "saved" block
+
+	장점 1. 완전한 객체로서 모든 기능을 사용할 수 있다. 
+	     2. 반복사용 할 수 있다. 
+
+cube = Proc.new { |x| x ** 3 }
+
+[1, 2, 3].collect!(&cube)
+# ==> [1, 8, 27]
+[4, 5, 6].map!(&cube)
+# ==> [64, 125, 216]
+
+@ .call
+
+	call 을 사용하여 proc을 바로 사용할 수 도 있다.
+	
+hi = Proc.new{puts "Hello!"}
+hi.call  # 1.times(&hi) 같은 느낌?
+
+@ Symbols, Meet Procs (with handy little &)
+
+strings = ["1", "2", "3"]
+nums = strings.map(&:to_i)
+# ==> [1, 2, 3]
+
+
+@ lambda (proc과 거의 유사)
+
+lambda { puts "Hello!" }
+===
+Proc.new { puts "Hello!" }
+
+
+@ proc 과 lambda 의 차이
+
+	1. lambda 는 params의 갯수를 세서 다르면 에러를 도출.
+		proc은 갯수 다르면 그건 그냥 nil로 처리하고 진행
+	2. lambda는 javasciprt 처럼 함수를 실행하도록 두고 나중에 callback 하지만
+		proc은 proc 블럭 내의 내용들을 바로 실행한다.\
+		
+eg)
+
+def batman_ironman_proc
+  victor = Proc.new { return "Batman will win!" }
+  victor.call
+  "Iron Man will win!"
+end
+
+puts batman_ironman_proc	#-> Batman will win!
+
+def batman_ironman_lambda
+  victor = lambda { return "Batman will win!" }
+  victor.call
+  "Iron Man will win!"
+end
+
+puts batman_ironman_lambda	#-> Iron Man will win!
+
+@ is_a? type
+
+	타입인지 확인하여 boolean을 리턴한다.
+	
+:hello.is_a? Symbol
+# ==> true
+
+
+@ select 문 
+
+블록이 true 값을 가지는 원소로 이루어진 새 배열을 리턴
+
+my_array = ["raindrops", :kettles, "whiskers", :mittens, :packages]
+
+# Add your code below!
+
+symbol_filter = lambda{|x| x.is_a? Symbol}
+symbols = my_array.select(&symbol_filter)
+
+	@ Object Oriented Programming
+@ Class
+
+A class is just a way of organizing and producing objects with similar attributes and methods.
+
+class NewClass
+  def initialize
+        
+    end
+end
+
+
+
+@ Object
+
+Objects have methods, which you've seen before, and attributes, which are just data
+
+@ @ means instance variable
+
+	it will have variable only for each object instance
+	
+@@@	
+
+global variables($ or define outta class) :	variables that are available everywhere 
+
+
+local variables	 :	only available certain methods 
+
+
+class variables(@@)	 :	members of a certain class (instance 갯수 카운팅할때 쓸수 있다.)
+
+
+instance variables(@) :	only available to particular instances of a class 
+
+
+@ 인스턴스 갯수 세기 with class variable
+
+class Person
+  # Set your class variable to 0 on line 3
+  @@people_count = 0
+  
+  def initialize(name)
+    @name = name
+    # Increment your class variable on line 8
+    @@people_count+=1
+  end
+  
+  def self.number_of_instances
+    # Return your class variable on line 13
+    @@people_count
+  end
+end
+
+matz = Person.new("Yukihiro")
+dhh = Person.new("David")
+
+puts "Number of Person instances: #{Person.number_of_instances}"
+
+@ Inheritance
+
+	class DerivedClass < BaseClass
+	  # Some stuff!
+	end
+
+	ApplicationError is a SuperBadError
+
+class ApplicationError
+  def display_error
+    puts "Error! Error!"
+  end
+end
+
+class SuperBadError < ApplicationError
+end
+
+err = SuperBadError.new
+err.display_error
+
+@ override
+
+class Creature
+  def initialize(name)
+    @name = name
+  end
+  
+  def fight
+    return "Punch to the chops!"
+  end
+end
+
+# Add your code below!
+class Dragon < Creature
+    def fight
+        return "Breathes fire!"
+    end
+end
+
+
+@ superclass
+
+class DerivedClass < Base
+  def some_method
+    super(optional args)
+      # Some stuff
+    end
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 
 
