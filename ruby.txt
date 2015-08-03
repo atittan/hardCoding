@@ -505,8 +505,46 @@ class DerivedClass < Base
   end
 end
 
+	eg)
+			class Creature
+			  def initialize(name)
+			    @name = name
+			  end
+			  
+			  def fight
+			    return "Punch to the chops!"
+			  end
+			end
+			
+			# Add your code below!
+			class Dragon < Creature
+			    def fight
+			        puts "Instead of breathing fire..."
+			        super		## 여기서는 superclass가 params를 가지고있지않기 때문에 super만 쓰지만
+			    end			## params를 가지고 super ~ end 구문으로 쓸 수 있다.
+			end
+			
+			dragon = Dragon.new("qkqh")
+			
+			dragon.fight
 
 
+
+@ one-line class 선언 
+
+class Dragon < Creature; end
+
+@ ruby 는 single inheritance 만 존재한다.
+
+	
+class Dragon < Creature; end
+class Dragon < Person; end
+	두개이상 상속받으려하면
+	superclass mismatch for class Dragon
+	
+이를 해결하기위해 나중에 mixins 를 배움
+
+@ 20/20 은 이해가안간다 다시공부
 
 
 
