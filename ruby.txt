@@ -547,6 +547,66 @@ class Dragon < Person; end
 @ 20/20 은 이해가안간다 다시공부
 
 
+@ class method
+
+	class 당 하나만 존재, class variable(@@)를 사용하기 위함
+	생성시, 사용시 모두 클래스명.클래스함수()
+	
+	class Machine
+	  def Machine.hello
+	    puts "Hello from the machine!"
+	  end
+	end
+	
+@ public and private
+	private 함수는 클래스 내에서만 호출가능
+	
+@ attr_reader, attr_writer
+	기본적으로 instance variable을 가져오기 위해서는
+	
+	def name	#java의 getter
+	  @name
+	end
+	
+	def name=(value)	#java의 setter(함수이름= 는 ruby의 convention)
+	  @name = value
+	end
+	
+하지만 더 간단하게
+
+	class Person
+	  attr_reader :name
+	  attr_writer :name
+	  def initialize(name)
+	    @name = name
+	  end
+	end
+	
+	!
+	
+접근은 그대로 instance.varName 혹은 = newVal
+로 읽고 쓰기가 가능하다
+즉 
+attr_reader : 읽기전용
+attr_writer : 쓰기전용
+attr_accessor : 둘다 가능 
+
+을 나타낸다.
+
+
+@ Module
+
+상수와 함수들을 저장해놓고 언제든지 쓸 수 있다.
+
+	클래스와 다른점
+	1. instance 를 생성할 수 없다.
+	2. subclass를 가질 수 없다.
+	
+모듈이 파라미터로 변수를 가지는건 말도 안된다.
+constants(상수)만을 가진다. 모두 대문자이며 단어사이에 underscore 사용 가능
+
+
+
 
 
 
