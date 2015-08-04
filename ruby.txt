@@ -605,10 +605,96 @@ attr_accessor : 둘다 가능
 모듈이 파라미터로 변수를 가지는건 말도 안된다.
 constants(상수)만을 가진다. 모두 대문자이며 단어사이에 underscore 사용 가능
 
+	eg)
+	module MyLibrary
+	
+	    FAVE_BOOK="Pabane"
+	    
+	end
 
 
+@ namespacing
 
+separate methods and constants into named spaces
 
+with
+	@ scope resolution operator
+	
+	eg) Math::PI
+	
+@ require
+
+Math 는 기본 interpreter 에 존재하지만
+그 이외의 Module을 추가하고 싶을 때
+	require 'module'
+	
+@ 클래스 안의 include
+
+클래스안에서 중복되어 모듈을 사용하여야 할 경우에는 include 하여 함수를 사용할 수 있다.
+이 경우에 namespacing은 필요없다.
+
+	class Angle
+	  include Math
+	  attr_accessor :radians
+	  
+	  def initialize(radians)
+	    @radians = radians
+	  end
+	  
+	  def cosine
+	    cos(@radians)
+	  end
+	end
+	
+	acute = Angle.new(1)
+	acute.cosine
+
+@ mixin(instance level)
+
+다중상속 대신에 module 을 사용하는 것
+
+# Create your module here!
+module MartialArts
+    def swordsman
+        puts "I'm a swordsman"
+    end
+end
+    
+class Ninja
+    include MartialArts
+  def initialize(clan)
+    @clan = clan
+  end
+end
+
+class Samurai
+    include MartialArts
+  def initialize(shogun)
+    @shogun = shogun
+  end
+end
+
+@ extend (class level function)
+	mixin 과는 다르게 class level의 함수를 사용 할 수 있도록 한다. 
+
+module ThePresent
+  def now
+    puts "It's #{Time.new.hour > 12 ? Time.new.hour - 12 : Time.new.hour}:#{Time.new.min} #{Time.new.hour > 12 ? 'PM' : 'AM'} (GMT)."
+  end
+end
+
+class TheHereAnd
+  extend ThePresent
+end
+
+TheHereAnd.now
+
+@ optional parameter
+	balance||= 100 처럼 초기값에 활용
+
+def initialize(name, balance=100)
+  @name = name
+  @balance = balance
 
 
 
