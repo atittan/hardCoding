@@ -696,6 +696,11 @@ def initialize(name, balance=100)
   @name = name
   @balance = balance
 
+@ 숫자 표기법
+
+1_000_000 처럼 큰 숫자들을 _ 로 구분해도 루비는 인식한다.
+
+
 
 
 
