@@ -1,0 +1,87 @@
+@ html body 안에 작성한다.
+
+
+@ echo : String 을 출력한다.
+
+<body>
+  <p>
+
+    <?php
+      echo "I'm learning PHP!";
+    ?>
+
+  </p>
+</body>
+
+@ concatenation dot ' . '
+
+<?php
+   echo "Hello," . " " . "world" . "!";
+?>
+
+@ PHP 의 모든 변수는 $로 시작
+
+@ comment 처리는 //
+
+@ switch 문\
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+    <?php
+    $fruit = "Apple";
+    
+    switch ($fruit) {
+        case 'Apple':
+            echo "Yummy.";
+            break;
+        default:
+            echo "noTaste";
+    }
+    
+    ?>
+    </body>
+</html>
+
+
+
+@ Multiple cases
+
+if문으로 처리할시
+
+    if ($i == 1 ||
+        $i == 2 ||
+        $i == 3) {
+     echo '$i is somewhere between 1 and 3.';
+    }
+    
+switch 문으로 처리할 시
+
+    case 1:
+    case 2:
+    case 3:
+        echo '$i is somewhere between 1 and 3.';
+        break;
+    
+    
+@ endswitch
+
+switch문은 두가지의 종류
+
+    1. curly brace syntax
+        switch ($i) { 
+        
+        }
+
+    2. alternative syntax
+    
+        switch ($i):
+        
+        endswitch;
+        
+
+
+
