@@ -83,5 +83,100 @@ switch문은 두가지의 종류
         endswitch;
         
 
+@ array와 offset 접근
+
+<?php
+ $myArray = array("do", "re", "mi");
+ print $myArray[2];
+ print $myArray{2};	// []와 {} 모두 사용할 수 있다. 효과는 같다.
+ // prints "mi";
+?>
+
+
+@ <?php
+  $array = array("red", "blue", "green");
+  unset($array[2]);
+?>
+
+<?php
+  unset($array); // 배열자체를 지우는것도가능
+?>
+
+
+
+@ for loop
+
+<?php
+for ($i = 0; $i < 10; $i++) {
+    echo $i;
+}
+// echoes 0123456789
+?>
+
+@ foreach
+
+<?php
+  $numbers = array(1, 2, 3);
+
+  foreach($numbers as $item) {
+      echo $item;
+  }
+?>
+
+@ while
+
+while(cond) {
+   // looped statements go here
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Your First PHP while loop!</title>
+	</head>
+	<body>
+    <?php
+	$loopCond = true;
+	while ($loopCond){
+		//Echo your message that the loop is running below
+		echo "<p>The loop is running.</p>";
+		
+		$loopCond = false;
+	}
+	echo "<p>And now it's done.</p>";
+    ?>
+    </body>
+</html>
+
+
+@ while을 멈추기 위한 readable
+
+while(cond):
+   // looped statements go here
+endwhile;
+
+@ do while 문
+
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Much a do-while</title>
+	</head>
+	<body>
+    <?php
+		$loopCond = false;
+		do 
+			echo "<p>The loop ran even though the loop condition is false.</p>"
+		while $loopCond
+		
+		
+		echo "<p>Now the loop is done running.</p>";
+    ?>
+    </body>
+</html>
+
+
+
+
 
 
