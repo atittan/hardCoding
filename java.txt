@@ -277,7 +277,19 @@ public class DogTest{
                     		
                     	}
                     }
-        
+                    
+                    
+@ abstract class
+
+- 다중 상속을 막기위해 만듬
+- 추상 메소드를 하나라도 가지면 추상 클래스가 된다. 
+
+@ interface
+
+추상 메소드 들로만 이루어진 클래스
+
+
+
 
 
 
