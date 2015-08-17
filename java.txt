@@ -1,0 +1,296 @@
+@ Class = field(variable) + methods(function)
+
+@ 자바는 클래스단위로되어 있다.
+
+파일명은 클래스이름과 같아야한다.
+
+@ scanf
+
+import후
+Scanner input = new Scanner(System.in);
+input.nextInt(); // 더블형이면 input.nextDouble();
+
+eg)
+        import java.util.Scanner;
+        
+        public class Add2{
+        
+        	public static void main(String args[]){
+        		Scanner input = new Scanner(System.in);
+        		int x; 
+        		int y;
+        		int sum;
+        
+        		System.out.print("첫 번째 숫자 입력하시오");
+        		x = input.nextInt();
+        
+        		System.out.print("두번째 숫자를 입력하시오	");
+        		y = input.nextInt();
+        
+        		sum=x+y;
+        
+        		System.out.println(sum);
+        
+        		
+        
+        	}
+        }
+        
+@ 자바의 자료형
+
+    1.기초형:(실제값이저장)
+            정수형:byte,short,int,long
+            실수형:float,double
+            논리형:boolean
+            문자형:char
+    2.참조형:(실제 객체를 가리키는 주소 저장)
+            클래스
+            인터페이스
+            배열
+            
+@ java에도 삼항 연산자가?
+
+max_value = (x > y ) ? x : y;
+
+eg1)
+    public class Test2{
+    	public static void main(String args[]){
+    		
+    		System.out.println( (2>1)? "Left" : "Right" );
+    	}
+    }
+    
+
+    
+@ case문은 동일
+break생략가능?
+
+
+@ if, while,
+do while 문: 조건상관없이 한번은 반복
+
+@ continue 문
+
+for문을 그 라인에서 중단하고 다시 루프의 처음으로 돌아감
+
+
+@ Class와 object
+
+Car myCar;          //참조 변수를 선언
+myCar = new Car();  // 객체생성후 참조값을 myCar 참조변수에 저장
+
+Car myCar= new Car();
+
+@ Methods
+
+public int add(int x, int y){
+    return x+y;
+}
+
+@ 두 개의 참조 변수가 하나의 객체를 가리킬 수 있다.
+
+Car myCar = new Car();
+Car yourCar = myCar;
+
+@ Garbage collection
+
+Car car1 = new Car();
+Car car2 = new Car();
+
+car2 = car1; // Car 타입의 참조변수 car2는 car1이 가리키던 객체를 가리키게되고 car2가 가리키던 객체는 Garbage collected
+car1 = null; // car1이 가리키던 객체는 아직 car2가 가리키고 있기 때문에 소멸되지 않고 남아있다.
+
+@ java에서 String은 객체
+
+원래 는 String s = new String("Hello World!");
+해야하지만
+String은 자주 쓰이므로 new 연산자를 생략
+
+String s = "hello world";
+s.length(); // 함수 사용 가능
+
+@ 문자열을 int 형으로 변환해 리턴
+
+String s = "string";
+parseInt(s);
+
+@ java에서 변수는 'field'
+
+eg)
+ public(접근지정자)     int(field 타입)     speed(첫단어 소문자)
+ 
+field: class 안에서 선언되는 멤버 변수 (instance 변수)
+
+local variable: methods나 block 안에서 선언되는 변수
+    -> 사용전에 initialize 필요
+global variable: methods 밖 class 안에서 선언, class 내 모든 methods 에서 사용 가능
+
+ 
+public: 모든 class로부터 접근가능한 field
+private: class 내부에서만 접근이 가능한 field
+
+@ Methods
+
+public(접근 지정자) void(반환형:return하는 타입) setSize(함수명)   
+
+
+@ parameter가 object 인 경우에도 값이 복사된다.
+eg)
+    
+    Car obj = new Car();
+    myCar.speedEquals(obj);
+    
+    public int speedEquals(Car c){
+        if(speed == c.speed) return true;
+        else return false;
+    }
+    
+@ Overloading method
+
+중복되는 함수 이름이 있어도 parameter로 구분한다.
+
+@ toString Methods
+
+최상위 object method인 toString을 overide하여 반환 string을 수정할 수 있다.
+overide 하지 않으면 기본적으로 object의 이름과 hash code를 반환한다.
+
+@ 배열생성의 두가지 방법
+
+    1. int[] numbers = new int[6];
+    2. int[] numbers = {1,2,3,4,5,6}; // 바로 값을 넣는것도 가능, 배열은 object 라서 culr bracket
+    
+eg)
+public class ArrayTest3{
+    public static void main(String[] args){
+        int[] numbers = {10,20,30};
+        for(int value : numbers){   // 변수 value에 첫번째 원소부터 마지막 배열원소까지 차례대로 대입 (each처럼)
+            System.out.println(value);
+        }
+    }
+}
+    
+@ Array of object
+
+Car[] cars = new Car[5];
+기존 array와 마찬가지로 선언만하고 비어있으므로
+객체에 대한 참조변수로만 이루어진 배열이 생성된 것 뿐
+각자 new를 해 instance를 생성해 주어야 한다.
+
+eg)
+    public class CarArrayTest{
+        public static void main(String[] args){
+            final int NUM_CARS = 5;
+            Car[] cars = new Car[NUM_CARS];
+            for(int i = 0; i < cars.length; i++){
+                cars[i] = new Car();
+            }
+        }
+    }
+
+
+@ 2 Dimension Array
+
+double[][] s= new double[3][5]; // double 형의 3행 5열 배열
+
+@ 2차원 배열의 initialize
+
+int[][] testArray = { {1,2,3}, {4,5,6}, {7,8,9} }
+    1 2 3
+    4 5 6
+    7 8 9
+    
+testArray.length = 행의 개수
+testArray[i].lenght = 그 행의 열의 개수
+
+@ Inheritance
+
+Vehicle <- Car <- SportsCar
+
+Car is a Vehicle
+SportsCar is a Car
+SportsCar is a Vehicle
+
+eg)
+    class Vehicle{}
+    class Car extends Vehicle{}
+    class SportsCar extends Car{}
+    
+@ Method overriding
+
+    method의 타입, 파라미터까지 정확히 입력해야 override 가 된다.
+    그렇지 않은 경우를 대비해서 @Override 를 통해 내가 override하겠다 라고 선언.
+    
+class Animal{
+    public void sound(){
+    
+    }
+}
+
+class Dog extends Animal {
+    public void sound(){
+        System.out.println("멍멍")!;
+    }
+}
+public class DogTest{
+    public static void main(String[] args){
+        Dog d = new Dog();
+        d.sound(); //=> 멍멍
+    }
+}
+
+@ Overloading
+
+파라미터만 달리하여 이름은 같지만 새로운 method를 만드는 것이 overloading
+
+
+@ 상속과 생성자 호출
+
+    1 서브클래스 생성자 호출
+    2 수퍼 클래스 생성자 호출
+    3 수퍼 클래스 생성자 실행 후 서브 클래스 생성자 실행
+    4 서브 클래스 생성자 실행 끝나면 원래 코드로 돌아온다.
+    
+    - 명시적 호출과 묵시적 호출
+        1) 명시적호출 extends 받은 후 자식 클래스에서 super(params); 로 생성자를 직접 입력해줘도된다.
+        2) 묵시적 호출 super(params);를 입력하지 않아도 자동으로 부모의 클래스 생성자를 생성한다.
+            단 params를 가지지 않은 default 생성자만 있는 경우 묵시적 호출이 가능
+            params를 가진 생성자가 있는 경우에는 묵시적 호출 불가
+            
+                    eg)
+                    class Shape{
+                    	public Shape(String msg){
+                    		System.out.println("Shape init()" + msg);
+                    	}
+                    }
+                    
+                    class Rectangle extends Shape{
+                    	public Rectangle(){
+                    		// super("aaa");
+                    		System.out.println("Rectangle init()");
+                    	}
+                    
+                    }
+                    
+                    public class InitTest{
+                    	public static void main(String args[]){
+                    		Rectangle rectangle = new Rectangle();
+                    		
+                    	}
+                    }
+        
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
