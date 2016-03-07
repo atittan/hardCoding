@@ -1,3 +1,4 @@
 oracle DBMS with Oracle Linux Enterprise 
 
 Query and OS command
+
